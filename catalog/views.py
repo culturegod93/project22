@@ -1,23 +1,27 @@
 from django.shortcuts import render
 
-
 def home(request):
-    """Отображение главной страницы"""
-    return render(request, 'catalog/home.html')
-
+    """Контроллер для главной страницы"""
+    context = {
+        'title': 'Главная страница',
+        'products': [
+            {'name': 'Товар 1', 'price': 1000, 'description': 'Описание товара 1'},
+            {'name': 'Товар 2', 'price': 1500, 'description': 'Описание товара 2'},
+            {'name': 'Товар 3', 'price': 2000, 'description': 'Описание товара 3'},
+        ]
+    }
+    return render(request, 'catalog/home.html', context)
 
 def contacts(request):
-    """Отображение страницы контактов с обработкой формы"""
-    if request.method == 'POST':
-        # Получаем данные из формы
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
-
-        # Здесь можно сохранить данные в базу или отправить email
-        print(f"Получено сообщение от {name} ({email}): {message}")
-
-        # Возвращаем страницу с сообщением об успехе
-        return render(request, 'catalog/contacts.html', {'success': True})
-
-    return render(request, 'catalog/contacts.html')
+    """Контроллер для страницы контактов"""
+    context = {
+        'title': 'Контакты',
+        'company_info': {
+            'name': 'Интернет-магазин',
+            'address': 'г. Москва, ул. Примерная, д. 123',
+            'phone': '+7 (495) 123-45-67',
+            'email': 'info@shop.ru',
+            'schedule': 'Пн-Пт: 9:00-18:00',
+        }
+    }
+    return render(request, 'catalog/contacts.html', context)

@@ -5,9 +5,11 @@
 
 ## Технологии
 - Python 3.11
-- Django 5.2.9
-- Bootstrap 5.3.8
-- SQLite
+- asgiref==3.11.0
+- Django==5.2.9
+- django-bootstrap5==25.3
+- sqlparse==0.5.4
+- tzdata==2025.3
 
 ## Установка
 1. Клонировать репозиторий
